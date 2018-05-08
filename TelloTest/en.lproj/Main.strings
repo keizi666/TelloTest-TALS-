@@ -1,0 +1,30 @@
+
+/* Class = "UIButton"; normalTitle = "Takeoff"; ObjectID = "0Ca-z9-XIC"; */
+"0Ca-z9-XIC.normalTitle" = "Takeoff";
+
+/* Class = "UIButton"; normalTitle = "Land"; ObjectID = "8ZV-MA-B0i"; */
+"8ZV-MA-B0i.normalTitle" = "Land";
+
+/* Class = "UILabel"; text = "TelloAltLimitSetter"; ObjectID = "IMb-7v-o9n"; */
+"IMb-7v-o9n.text" = "TelloAltLimitSetter";
+
+/* Class = "UILabel"; text = "-- m"; ObjectID = "LPo-j0-dWV"; */
+"LPo-j0-dWV.text" = "-- m";
+
+/* Class = "UILabel"; text = "Current Altitude Limit: --m"; ObjectID = "aEx-MM-yEq"; */
+"aEx-MM-yEq.text" = "Current Altitude Limit: --m";
+
+/* Class = "UISegmentedControl"; c2R-kw-LZc.segmentTitles[0] = "Meter"; ObjectID = "c2R-kw-LZc"; */
+"c2R-kw-LZc.segmentTitles[0]" = "Meter";
+
+/* Class = "UISegmentedControl"; c2R-kw-LZc.segmentTitles[1] = "Imperial"; ObjectID = "c2R-kw-LZc"; */
+"c2R-kw-LZc.segmentTitles[1]" = "Imperial";
+
+/* Class = "UILabel"; text = "Please connect to Tello's wi-fi."; ObjectID = "ePg-cg-Ufn"; */
+"ePg-cg-Ufn.text" = "Please connect to Tello's wi-fi.";
+
+/* Class = "UILabel"; text = "1.Slide the seek bar.\r2.Tap [Send value to Tello]"; ObjectID = "fXV-va-NSx"; */
+"fXV-va-NSx.text" = "1.Slide the seek bar.\r2.Tap [Send value to Tello]";
+
+/* Class = "UIButton"; normalTitle = "Send value to Tello"; ObjectID = "pd1-RS-63x"; */
+"pd1-RS-63x.normalTitle" = "Send value to Tello";

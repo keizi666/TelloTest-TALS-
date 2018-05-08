@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C00B9E100301F26463FBECF /* Pods_TelloTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512235BCFF67D079869384D1 /* Pods_TelloTest.framework */; };
+		A64B817C209EEDA80010874A /* TelloPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64B817B209EEDA80010874A /* TelloPacket.swift */; };
+		A64B817E20A0D0C80010874A /* button_bigP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A64B817D20A0D0C80010874A /* button_bigP@2x.png */; };
+		A64B818020A0DB840010874A /* 1080_1920.png in Resources */ = {isa = PBXBuildFile; fileRef = A64B817F20A0DB840010874A /* 1080_1920.png */; };
+		A64B818520A1429C0010874A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A64B818720A1429C0010874A /* Localizable.strings */; };
+		A64B818D20A1461C0010874A /* UIUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64B818B20A1461C0010874A /* UIUtility.swift */; };
+		A64B818E20A1461C0010874A /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64B818C20A1461C0010874A /* General.swift */; };
 		A65B07D42099DE8B000F840C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B07D32099DE8B000F840C /* AppDelegate.swift */; };
 		A65B07D62099DE8B000F840C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B07D52099DE8B000F840C /* ViewController.swift */; };
 		A65B07D92099DE8B000F840C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65B07D72099DE8B000F840C /* Main.storyboard */; };
 		A65B07DB2099DE8E000F840C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65B07DA2099DE8E000F840C /* Assets.xcassets */; };
 		A65B07DE2099DE8E000F840C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65B07DC2099DE8E000F840C /* LaunchScreen.storyboard */; };
 		A65B07E92099DE8E000F840C /* TelloTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B07E82099DE8E000F840C /* TelloTestTests.swift */; };
+		B2F1CF203942C1C62349364A /* Pods_TelloTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B80D5B239AB8BF6519D60C1 /* Pods_TelloTestTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +34,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B80D5B239AB8BF6519D60C1 /* Pods_TelloTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TelloTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		512235BCFF67D079869384D1 /* Pods_TelloTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TelloTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		652BB14A281005E77DB63EB9 /* Pods-TelloTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelloTestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TelloTestTests/Pods-TelloTestTests.release.xcconfig"; sourceTree = "<group>"; };
+		65AF8F2D8A7A976EE22802FD /* Pods-TelloTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelloTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-TelloTest/Pods-TelloTest.release.xcconfig"; sourceTree = "<group>"; };
+		A64B817B209EEDA80010874A /* TelloPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelloPacket.swift; sourceTree = "<group>"; };
+		A64B817D20A0D0C80010874A /* button_bigP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_bigP@2x.png"; sourceTree = "<group>"; };
+		A64B817F20A0DB840010874A /* 1080_1920.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1080_1920.png; sourceTree = "<group>"; };
+		A64B818620A1429C0010874A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A64B818820A142A90010874A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		A64B818920A142A90010874A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A64B818A20A142A90010874A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A64B818B20A1461C0010874A /* UIUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtility.swift; sourceTree = "<group>"; };
+		A64B818C20A1461C0010874A /* General.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		A64B819020A151C40010874A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		A65B07D02099DE8B000F840C /* TelloTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelloTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65B07D32099DE8B000F840C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A65B07D52099DE8B000F840C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +58,8 @@
 		A65B07E42099DE8E000F840C /* TelloTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TelloTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65B07E82099DE8E000F840C /* TelloTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelloTestTests.swift; sourceTree = "<group>"; };
 		A65B07EA2099DE8E000F840C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAC200339BCDB07928A79CE2 /* Pods-TelloTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelloTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TelloTest/Pods-TelloTest.debug.xcconfig"; sourceTree = "<group>"; };
+		F5CD20BADC4F971F9BAA9194 /* Pods-TelloTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelloTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TelloTestTests/Pods-TelloTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C00B9E100301F26463FBECF /* Pods_TelloTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,18 +75,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2F1CF203942C1C62349364A /* Pods_TelloTestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15AA75B76C22A1E18BC7BC79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				512235BCFF67D079869384D1 /* Pods_TelloTest.framework */,
+				4B80D5B239AB8BF6519D60C1 /* Pods_TelloTestTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		36BFE1E109BBAFC40C1BBF25 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DAC200339BCDB07928A79CE2 /* Pods-TelloTest.debug.xcconfig */,
+				65AF8F2D8A7A976EE22802FD /* Pods-TelloTest.release.xcconfig */,
+				F5CD20BADC4F971F9BAA9194 /* Pods-TelloTestTests.debug.xcconfig */,
+				652BB14A281005E77DB63EB9 /* Pods-TelloTestTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A65B07C72099DE8B000F840C = {
 			isa = PBXGroup;
 			children = (
 				A65B07D22099DE8B000F840C /* TelloTest */,
 				A65B07E72099DE8E000F840C /* TelloTestTests */,
 				A65B07D12099DE8B000F840C /* Products */,
+				36BFE1E109BBAFC40C1BBF25 /* Pods */,
+				15AA75B76C22A1E18BC7BC79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,9 +127,15 @@
 			children = (
 				A65B07D32099DE8B000F840C /* AppDelegate.swift */,
 				A65B07D52099DE8B000F840C /* ViewController.swift */,
+				A64B817B209EEDA80010874A /* TelloPacket.swift */,
+				A64B818C20A1461C0010874A /* General.swift */,
+				A64B818B20A1461C0010874A /* UIUtility.swift */,
 				A65B07D72099DE8B000F840C /* Main.storyboard */,
+				A64B817D20A0D0C80010874A /* button_bigP@2x.png */,
+				A64B818720A1429C0010874A /* Localizable.strings */,
 				A65B07DA2099DE8E000F840C /* Assets.xcassets */,
 				A65B07DC2099DE8E000F840C /* LaunchScreen.storyboard */,
+				A64B817F20A0DB840010874A /* 1080_1920.png */,
 				A65B07DF2099DE8E000F840C /* Info.plist */,
 			);
 			path = TelloTest;
@@ -103,9 +157,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A65B07ED2099DE8E000F840C /* Build configuration list for PBXNativeTarget "TelloTest" */;
 			buildPhases = (
+				522B6D9290BB82425EB0EC26 /* [CP] Check Pods Manifest.lock */,
 				A65B07CC2099DE8B000F840C /* Sources */,
 				A65B07CD2099DE8B000F840C /* Frameworks */,
 				A65B07CE2099DE8B000F840C /* Resources */,
+				2FE5E5BBC64A298E72425F97 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -120,6 +176,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A65B07F02099DE8E000F840C /* Build configuration list for PBXNativeTarget "TelloTestTests" */;
 			buildPhases = (
+				F39450C123914DE7EEEB0A49 /* [CP] Check Pods Manifest.lock */,
 				A65B07E02099DE8E000F840C /* Sources */,
 				A65B07E12099DE8E000F840C /* Frameworks */,
 				A65B07E22099DE8E000F840C /* Resources */,
@@ -160,6 +217,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = A65B07C72099DE8B000F840C;
 			productRefGroup = A65B07D12099DE8B000F840C /* Products */;
@@ -177,6 +235,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64B818020A0DB840010874A /* 1080_1920.png in Resources */,
+				A64B818520A1429C0010874A /* Localizable.strings in Resources */,
+				A64B817E20A0D0C80010874A /* button_bigP@2x.png in Resources */,
 				A65B07DE2099DE8E000F840C /* LaunchScreen.storyboard in Resources */,
 				A65B07DB2099DE8E000F840C /* Assets.xcassets in Resources */,
 				A65B07D92099DE8B000F840C /* Main.storyboard in Resources */,
@@ -192,12 +253,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2FE5E5BBC64A298E72425F97 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TelloTest/Pods-TelloTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TelloTest/Pods-TelloTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		522B6D9290BB82425EB0EC26 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TelloTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F39450C123914DE7EEEB0A49 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TelloTestTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A65B07CC2099DE8B000F840C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64B818E20A1461C0010874A /* General.swift in Sources */,
+				A64B817C209EEDA80010874A /* TelloPacket.swift in Sources */,
 				A65B07D62099DE8B000F840C /* ViewController.swift in Sources */,
+				A64B818D20A1461C0010874A /* UIUtility.swift in Sources */,
 				A65B07D42099DE8B000F840C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,10 +342,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A64B818720A1429C0010874A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A64B818620A1429C0010874A /* en */,
+				A64B818A20A142A90010874A /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A65B07D72099DE8B000F840C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A65B07D82099DE8B000F840C /* Base */,
+				A64B818820A142A90010874A /* ja */,
+				A64B819020A151C40010874A /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -233,6 +365,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A65B07DD2099DE8E000F840C /* Base */,
+				A64B818920A142A90010874A /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -244,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -304,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -356,16 +491,18 @@
 		};
 		A65B07EE2099DE8E000F840C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAC200339BCDB07928A79CE2 /* Pods-TelloTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GQHH7CJ4TC;
 				INFOPLIST_FILE = TelloTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.keiziweb.TelloTest;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.keiziweb.TelloAltLimitSetter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -374,16 +511,18 @@
 		};
 		A65B07EF2099DE8E000F840C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65AF8F2D8A7A976EE22802FD /* Pods-TelloTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GQHH7CJ4TC;
 				INFOPLIST_FILE = TelloTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.keiziweb.TelloTest;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.keiziweb.TelloAltLimitSetter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -392,6 +531,7 @@
 		};
 		A65B07F12099DE8E000F840C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5CD20BADC4F971F9BAA9194 /* Pods-TelloTestTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -413,6 +553,7 @@
 		};
 		A65B07F22099DE8E000F840C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 652BB14A281005E77DB63EB9 /* Pods-TelloTestTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

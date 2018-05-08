@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  TelloTest
+
+  Created by matsumoto keiji on 2018/05/08.
+  Copyright © 2018年 keiziweb. All rights reserved.
+*/
+
+"ok" = "OK";
+"cancel" = "キャンセル";
+"yes" = "はい";
+"no" = "いいえ";
+"confirm" = "確認";
+"error" = "エラー";
+
+"Succeeded" = "成功しました。";
+"CurrentAltFormat" = "現在の高度制限値:%@";
+"UpdateSucceeded" = "更新に成功しました。";
+
+"FaultGetAlt" = "高度制限値更新に失敗しました。接続を確認してください。";
+"SuccessConnect" = "Telloに接続しました。";
+
+"not_recommend" = "%@以上に設定するのはお勧めしません。それでも設定しますか？";
+"not_net" = "ネットワークに接続されていません。";

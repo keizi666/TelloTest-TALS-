@@ -1,0 +1,29 @@
+
+/* Class = "UIButton"; normalTitle = "Takeoff"; ObjectID = "0Ca-z9-XIC"; */
+"0Ca-z9-XIC.normalTitle" = "離陸";
+
+/* Class = "UIButton"; normalTitle = "Land"; ObjectID = "8ZV-MA-B0i"; */
+"8ZV-MA-B0i.normalTitle" = "着陸";
+
+/* Class = "UILabel"; text = "TelloAltLimitSetter"; ObjectID = "IMb-7v-o9n"; */
+"IMb-7v-o9n.text" = "TelloAltLimitSetter";
+
+/* Class = "UILabel"; text = "10m"; ObjectID = "LPo-j0-dWV"; */
+"LPo-j0-dWV.text" = "--m";
+
+/* Class = "UILabel"; text = "Current Altitude Limit: 10m"; ObjectID = "aEx-MM-yEq"; */
+"aEx-MM-yEq.text" = "現在の高度制限値: --m";
+
+/* Class = "UISegmentedControl"; c2R-kw-LZc.segmentTitles[0] = "Meter"; ObjectID = "c2R-kw-LZc"; */
+"c2R-kw-LZc.segmentTitles[0]" = "メートル";
+
+/* Class = "UISegmentedControl"; c2R-kw-LZc.segmentTitles[1] = "Imperial"; ObjectID = "c2R-kw-LZc"; */
+"c2R-kw-LZc.segmentTitles[1]" = "インペリアル";
+
+/* Class = "UILabel"; text = "1.Slide the seek bar.\r2.Tap [Send value to Tello]"; ObjectID = "fXV-va-NSx"; */
+"fXV-va-NSx.text" = "1.シークバーで制限を調整。\n2.[高度制限を書き換える]をタップ。";
+
+"ePg-cg-Ufn.text" = "TelloのWi-Fiに接続してください。";
+
+/* Class = "UIButton"; normalTitle = "Send value to Tello"; ObjectID = "pd1-RS-63x"; */
+"pd1-RS-63x.normalTitle" = "高度制限を書き換える";

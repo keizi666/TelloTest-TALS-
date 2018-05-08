@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  TelloTest
+
+  Created by matsumoto keiji on 2018/05/08.
+  Copyright © 2018年 keiziweb. All rights reserved.
+*/
+
+"ok" = "OK";
+"cancel" = "Cancel";
+"yes" = "YES";
+"no" = "NO";
+"confirm" = "Confirm";
+"error" = "Error";
+
+
+"Succeeded" = "Succeeded";
+"CurrentAltFormat" = "Current Altitude Limit:%@";
+"UpdateSucceeded" = "Update succeeded.";
+
+"FaultGetAlt" = "Fault get current altitude.";
+"SuccessConnect" = "Successfully connected to Tello:";
+
+"not_recommend" = "Do'nt recommend over %@. Do you want to set it?";
+"not_net" = "It's not connected to the network.";
+
