@@ -23,7 +23,6 @@ class ViewController: UIViewController {
 	var _isEnd:Bool = false
 
 	@IBOutlet var _labelSSID: UILabel!
-	var _otherSettingsPhase:Int = 0
 
 	var _carrentAltitude:Int = 0
 
@@ -39,10 +38,6 @@ class ViewController: UIViewController {
 	@IBOutlet var _buttonSend: UIButton!
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		let b:[UInt8] = [0x00,0x0c,0x54,0x45,0x4c,0x4c,0x4f,0x2d,0x42,0x35,0x34,0x46,0x45,0x30]		
-		String(format: NSLocalizedString("SSID",comment:""), String(bytes: b, encoding: .ascii)!)
-
 		
 		//Load unit setting from user default
 		let ud = UserDefaults.standard
@@ -124,7 +119,6 @@ class ViewController: UIViewController {
 								self._isConnect = true
 							}
 							let resGetAlt:Result = client.send(data: TelloPacket.createGetAltitudePacket())
-//							self._otherSettingsPhase = 0
 							if(resGetAlt.isFailure) {
 								print("Error:Send GetAltitudePacket")
 								self.closeConnection()
@@ -153,9 +147,6 @@ class ViewController: UIViewController {
 											UIUtility.showAlertWithOK(vc: self, title: NSLocalizedString("Succeeded",comment:""), message: NSLocalizedString("UpdateSucceeded",comment:""))
 										}
 										self._isSendingAltitude = false
-										
-										if(self._otherSettingsPhase == 0) {
-										}
 									}
 								}
 								//TELLO_CMD_REGION
@@ -179,9 +170,13 @@ class ViewController: UIViewController {
 								else if(packet._commandID == TelloPacket.TELLO_CMD_SSID) {
 									
 									DispatchQueue.main.async {
-										if let data = packet._data {
+										if var data = packet._data {
+											data[0] = 0x20
+											data[1] = 0x20
 											//print(TelloPacket.packetToHexString(packet: data))
-											self._labelSSID?.text = String(format: NSLocalizedString("SSID",comment:""), String(bytes: data, encoding: .ascii)!)
+											var ssid = String(format: NSLocalizedString("SSID",comment:""), String(bytes: data, encoding: .ascii)!)
+											ssid = ssid.replacingOccurrences(of:" ", with:"")
+											self._labelSSID?.text = ssid
 										}
 									}
 								}

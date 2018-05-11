@@ -5,7 +5,8 @@
 //  Created by matsumoto keiji on 2018/05/06.
 //  Copyright © 2018 keiziweb. All rights reserved.
 //
-/*Reference
+/*Thank you to the community and webpage.
+https://tellopilots.com/
 https://github.com/Kragrathea/TelloPC
 https://dl-cdn.ryzerobotics.com/downloads/tello/0228/Tello+SDK+Readme.pdf
 https://drive.google.com/file/d/1t12MK-jG4df90gMjD8syPrAZ8VmdqCDA/view
