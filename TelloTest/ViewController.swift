@@ -39,6 +39,9 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		let data:[UInt8] = [0x00,0x0c,0x54,0x45 ,0x4c ,0x4c ,0x4f ,0x2d ,0x4d ,0x32 ]
+		print(TelloPacket.dataToAsciiString(data: data))
+		
 		//Load unit setting from user default
 		let ud = UserDefaults.standard
 		_unitType = ud.integer(forKey:ViewController.KEY_SETTING_UNIT_TYPE)
@@ -152,32 +155,39 @@ class ViewController: UIViewController {
 								//TELLO_CMD_REGION
 								else if(packet._commandID == TelloPacket.TELLO_CMD_REGION) {
 									DispatchQueue.main.async {
-										if let data = packet._data {
+										self._labelRegion?.text = String(format: NSLocalizedString("Region",comment:""), TelloPacket.dataToAsciiString(data: packet._data))
+										
+/*										if var data = packet._data {
+											data[0] = 0x20
+											print(TelloPacket.packetToHexString(packet: data))
+											print(String(bytes: data, encoding: .ascii)!)
 											self._labelRegion?.text = String(format: NSLocalizedString("Region",comment:""), String(bytes: data, encoding: .ascii)!)
 										}
-									}
+*/									}
 								}
 								//TELLO_CMD_VERSION_STRING
 								else if(packet._commandID == TelloPacket.TELLO_CMD_VERSION_STRING) {
 
 									DispatchQueue.main.async {
-										if let data = packet._data {
-											self._labelVersion?.text = String(format: NSLocalizedString("Version",comment:""), String(bytes: data, encoding: .ascii)!)
-										}
+										self._labelVersion?.text = String(format: NSLocalizedString("Version",comment:""), TelloPacket.dataToAsciiString(data: packet._data))
 									}
 								}
 								//TELLO_CMD_SSID
 								else if(packet._commandID == TelloPacket.TELLO_CMD_SSID) {
 									
 									DispatchQueue.main.async {
-										if var data = packet._data {
+										var ssid = String(format: NSLocalizedString("SSID",comment:""), TelloPacket.dataToAsciiString(data: packet._data))
+										ssid = ssid.replacingOccurrences(of:" ", with:"")
+										self._labelSSID?.text = ssid
+										
+/*										if var data = packet._data {
 											data[0] = 0x20
 											data[1] = 0x20
-											//print(TelloPacket.packetToHexString(packet: data))
+											print(TelloPacket.packetToHexString(packet: data))
 											var ssid = String(format: NSLocalizedString("SSID",comment:""), String(bytes: data, encoding: .ascii)!)
 											ssid = ssid.replacingOccurrences(of:" ", with:"")
 											self._labelSSID?.text = ssid
-										}
+										}*/
 									}
 								}
 							}

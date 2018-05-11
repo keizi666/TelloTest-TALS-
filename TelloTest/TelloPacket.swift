@@ -271,6 +271,19 @@ class TelloPacket {
 		return UInt16(j)
 	}
 
+	static func dataToAsciiString(data:[UInt8]?)->String {
+		if var data = data {
+			if(data[0] == 0x00) {
+				data[0] = 0x20
+			}
+			if(data[1] == 0x0c) {
+				data[1] = 0x20
+			}
+			return String(bytes: data, encoding: .ascii)!
+		}
+		return ""
+	}
+	
 	static func calcCrcToInt(bytes:[UInt8],len:Int)->UInt16	{
 		if (len <= 2) {
 			return 0
