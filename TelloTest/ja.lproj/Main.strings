@@ -23,7 +23,7 @@
 /* Class = "UILabel"; text = "1.Slide the seek bar.\r2.Tap [Send value to Tello]"; ObjectID = "fXV-va-NSx"; */
 "fXV-va-NSx.text" = "1.シークバーで制限を調整。\n2.[高度制限を書き換える]をタップ。";
 
-"ePg-cg-Ufn.text" = "TelloのWi-Fiに接続してください。";
+"ePg-cg-Ufn.text" = "TelloのWi-Fiに接続してください。Tello公式アプリはタスクキルしてください。";
 
 /* Class = "UIButton"; normalTitle = "Send value to Tello"; ObjectID = "pd1-RS-63x"; */
 "pd1-RS-63x.normalTitle" = "高度制限を書き換える";

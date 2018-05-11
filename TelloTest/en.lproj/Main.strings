@@ -21,7 +21,7 @@
 "c2R-kw-LZc.segmentTitles[1]" = "Imperial";
 
 /* Class = "UILabel"; text = "Please connect to Tello's wi-fi."; ObjectID = "ePg-cg-Ufn"; */
-"ePg-cg-Ufn.text" = "Please connect to Tello's wi-fi.";
+"ePg-cg-Ufn.text" = "Please connect to Tello's wi-fi.\nAnd, task kill the Tello app.";
 
 /* Class = "UILabel"; text = "1.Slide the seek bar.\r2.Tap [Send value to Tello]"; ObjectID = "fXV-va-NSx"; */
 "fXV-va-NSx.text" = "1.Slide the seek bar.\r2.Tap [Send value to Tello]";

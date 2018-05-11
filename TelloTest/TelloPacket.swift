@@ -28,12 +28,209 @@ class TelloPacket {
 	var _size:Int = 0
 	var _crc8:Int = 0
 	var _typeID:Int = 0
-	var _commandID:Int = 0
+	var _commandID:UInt16 = 0
 	var _seqNo:Int = 0
 	var _data:[UInt8]? = nil
 	var _crc16:Int = 0
 	
 	var _isCheckCRC:Bool = false
+
+	// TELLO COMMAND
+	static let TELLO_CMD_CONN:UInt16                      = 1
+	static let TELLO_CMD_CONN_ACK:UInt16                  = 2
+	
+	//Wi-Fi設定
+	static let TELLO_CMD_SSID:UInt16                      = 17     // pt48
+	static let TELLO_CMD_SET_SSID:UInt16                  = 18     // pt68
+	static let TELLO_CMD_SSID_PASS:UInt16                 = 19     // pt48
+	static let TELLO_CMD_SET_SSID_PASS:UInt16             = 20     // pt68
+	
+	//地域設定　日本=JP USにするとFCCモードになる？
+	static let TELLO_CMD_REGION:UInt16                    = 21     // pt48
+	static let TELLO_CMD_SET_REGION:UInt16                = 22     // pt68
+	
+	static let TELLO_CMD_REQ_VIDEO_SPS_PPS:UInt16         = 37     // pt60
+	static let TELLO_CMD_SWITCH_PICTURE_VIDEO:UInt16      = 49     // pt68
+	static let TELLO_CMD_START_RECORDING:UInt16           = 50     // pt68
+	
+	static let TELLO_CMD_SET_EV:UInt16                    = 52     // pt48
+	static let TELLO_CMD_DATE_TIME:UInt16                 = 70     // pt50
+	static let TELLO_CMD_STICK:UInt16                     = 80     // pt60
+	
+	static let TELLO_CMD_LOG_HEADER_WRITE:UInt16          = 4176   // pt50
+	static let TELLO_CMD_LOG_DATA_WRITE:UInt16            = 4177   // RX_O
+	static let TELLO_CMD_LOG_CONFIGURATION:UInt16         = 4178   // pt50
+	
+	static let TELLO_CMD_WIFI_SIGNAL:UInt16               = 26     // RX_O  //ステータスとして１秒毎に来る
+	
+	static let TELLO_CMD_VIDEO_BIT_RATE:UInt16            = 40     // pt48
+	static let TELLO_CMD_LIGHT_STRENGTH:UInt16            = 53     // RX_O
+	static let TELLO_CMD_VERSION_STRING:UInt16            = 69     // pt48
+	static let TELLO_CMD_ACTIVATION_TIME:UInt16           = 71     // pt48
+	static let TELLO_CMD_LOADER_VERSION:UInt16            = 73     // pt48
+	
+	static let TELLO_CMD_STATUS:UInt16                    = 86     // RX_O
+	
+	//ローバッテリーのしきい値  0x1057 cc size:70 00 crc8:cb type:b0 command:57 10 data:00 00 00 14(20%) crc16:00 6e
+	static let TELLO_CMD_LOW_BATT_THRESHOLD:UInt16        = 4183   // pt48
+	static let TELLO_CMD_SET_LOW_BATTERY_THRESHOLD:UInt16 = 4181   // pt68
+	
+	//写真撮影
+	static let TELLO_CMD_TAKE_PICTURE:UInt16              = 48     // pt68  //写真を撮る
+	static let TELLO_CMD_SET_JPEG_QUALITY:UInt16          = 55     // pt68   //JPEGの圧縮率
+	static let TELLO_CMD_FILE_SIZE:UInt16                 = 98     // pt50  //JPEGファイルのサイズ
+	static let TELLO_CMD_FILE_DATA:UInt16                 = 99     // pt50
+	static let TELLO_CMD_FILE_COMPLETE:UInt16             = 100    // pt48
+	
+	//離着陸
+	static let TELLO_CMD_TAKEOFF:UInt16                   = 84     // pt68
+	static let TELLO_CMD_LANDING:UInt16                   = 85     // pt68
+	static let TELLO_CMD_PALM_LANDING:UInt16              = 94     // pt48
+	
+	//高度制限
+	static let TELLO_CMD_SET_ALT_LIMIT:UInt16             = 88     // pt68   //高度制限の値を変更する
+	static let TELLO_CMD_ALT_LIMIT:UInt16                 = 4182   // pt48   //高度制限の値をリクエストすると返ってくる
+	
+	static let TELLO_CMD_FLIP:UInt16                      = 92     // pt70
+	static let TELLO_CMD_THROW_FLY:UInt16                 = 93     // pt48
+	
+	static let TELLO_CMD_PLANE_CALIBRATION:UInt16         = 4180   // pt68
+	
+	//姿勢の角度？
+	static let TELLO_CMD_SET_ATTITUDE_ANGLE:UInt16        = 4184   // pt68
+	static let TELLO_CMD_ATT_ANGLE:UInt16                 = 4185   // pt48
+	
+	static let TELLO_CMD_ERROR1:UInt16                    = 67     // RX_O
+	static let TELLO_CMD_ERROR2:UInt16                    = 68     // RX_O
+	
+	static let TELLO_CMD_HANDLE_IMU_ANGLE:UInt16          = 90     // pt48
+	static let TELLO_CMD_SET_VIDEO_BIT_RATE:UInt16        = 32     // pt68
+	static let TELLO_CMD_SET_DYN_ADJ_RATE:UInt16          = 33     // pt68
+	static let TELLO_CMD_SET_EIS:UInt16                   = 36     // pt68
+	static let TELLO_CMD_BOUNCE:UInt16                    = 4179   // pt68
+	
+	//Smart Video
+	static let TELLO_CMD_SMART_VIDEO_START:UInt16         = 128    // pt68
+	static let TELLO_CMD_SMART_VIDEO_STATUS:UInt16        = 129    // pt50
+	
+	static let TELLO_SMART_VIDEO_STOP:UInt16              = 0x00
+	static let TELLO_SMART_VIDEO_START:UInt16             = 0x01
+	static let TELLO_SMART_VIDEO_360:UInt16               = 0x01
+	static let TELLO_SMART_VIDEO_CIRCLE:UInt16            = 0x02
+	static let TELLO_SMART_VIDEO_UP_OUT:UInt16            = 0x03
+	
+	static let CONN:String                      = "CONN"
+	static let CONN_ACK:String                  = "CONN_ACK"
+	static let SSID:String                      = "SSID"     // pt48
+	static let SET_SSID:String                  = "SET_SSID"     // pt68
+	static let SSID_PASS:String                 = "SSID_PASS"     // pt48
+	static let SET_SSID_PASS:String             = "SET_SSID_PASS"     // pt68
+	static let REGION:String                    = "REGION"     // pt48
+	static let SET_REGION:String                = "SET_REGION"     // pt68
+	static let REQ_VIDEO_SPS_PPS:String         = "REQ_VIDEO_SPS_PPS"     // pt60
+	static let TAKE_PICTURE:String              = "TAKE_PICTURE"     // pt68
+	static let SWITCH_PICTURE_VIDEO:String      = "SWITCH_PICTURE_VIDEO"     // pt68
+	static let START_RECORDING:String           = "START_RECORDING"     // pt68
+	static let SET_EV:String                    = "SET_EV"     // pt48
+	static let DATE_TIME:String                 = "DATE_TIME"     // pt50
+	static let STICK:String                     = "STICK"     // pt60
+	static let LOG_HEADER_WRITE:String          = "LOG_HEADER_WRITE"   // pt50
+	static let LOG_DATA_WRITE:String            = "LOG_DATA_WRITE"   // RX_O
+	static let LOG_CONFIGURATION:String         = "LOG_CONFIGURATION"   // pt50
+	static let WIFI_SIGNAL:String               = "WIFI_SIGNAL"     // RX_O
+	static let VIDEO_BIT_RATE:String            = "VIDEO_BIT_RATE"     // pt48
+	static let LIGHT_STRENGTH:String            = "LIGHT_STRENGTH"     // RX_O
+	static let VERSION_STRING:String            = "VERSION_STRING"     // pt48
+	static let ACTIVATION_TIME:String           = "ACTIVATION_TIME"     // pt48
+	static let LOADER_VERSION:String            = "LOADER_VERSION"     // pt48
+	static let STATUS:String                    = "STATUS"     // RX_O
+	static let ALT_LIMIT:String                 = "ALT_LIMIT"   // pt48
+	static let LOW_BATT_THRESHOLD:String        = "LOW_BATT_THRESHOLD"   // pt48
+	static let ATT_ANGLE:String                 = "ATT_ANGLE"   // pt48
+	static let SET_JPEG_QUALITY:String          = "SET_JPEG_QUALITY"     // pt68
+	static let TAKEOFF:String                   = "TAKEOFF"     // pt68
+	static let LANDING:String                   = "LANDING"     // pt68
+	static let SET_ALT_LIMIT:String             = "SET_ALT_LIMIT"     // pt68
+	static let FLIP:String                      = "FLIP"     // pt70
+	static let THROW_FLY:String                 = "THROW_FLY"     // pt48
+	static let PALM_LANDING:String              = "PALM_LANDING"     // pt48
+	static let PLANE_CALIBRATION:String         = "PLANE_CALIBRATION"   // pt68
+	static let SET_LOW_BATTERY_THRESHOLD:String = "SET_LOW_BATTERY_THRESHOLD"   // pt68
+	static let SET_ATTITUDE_ANGLE:String        = "SET_ATTITUDE_ANGLE"   // pt68
+	static let ERROR1:String                    = "ERROR1"     // RX_O
+	static let ERROR2:String                    = "ERROR2"     // RX_O
+	static let FILE_SIZE:String                 = "FILE_SIZE"     // pt50
+	static let FILE_DATA:String                 = "FILE_DATA"     // pt50
+	static let FILE_COMPLETE:String             = "FILE_COMPLETE"    // pt48
+	static let HANDLE_IMU_ANGLE:String          = "HANDLE_IMU_ANGLE"     // pt48
+	static let SET_VIDEO_BIT_RATE:String        = "SET_VIDEO_BIT_RATE"     // pt68
+	static let SET_DYN_ADJ_RATE:String          = "SET_DYN_ADJ_RATE"     // pt68
+	static let SET_EIS:String                   = "SET_EIS"     // pt68
+	static let SMART_VIDEO_START:String         = "SMART_VIDEO_START"    // pt68
+	static let SMART_VIDEO_STATUS:String        = "SMART_VIDEO_STATUS"    // pt50
+	static let BOUNCE:String                    = "BOUNCE"   // pt68
+	
+	static func commandNoToString(command: UInt16)->String {
+		var ret:String = ""
+		
+		if(command == TELLO_CMD_CONN) {ret = CONN}
+		else if(command == TELLO_CMD_CONN_ACK) {ret = CONN_ACK}
+		else if(command == TELLO_CMD_SSID) {ret = SSID}
+		else if(command == TELLO_CMD_SET_SSID) {ret = SET_SSID}
+		else if(command == TELLO_CMD_SSID_PASS) {ret = SSID_PASS}
+		else if(command == TELLO_CMD_SET_SSID_PASS) {ret = SET_SSID_PASS}
+		else if(command == TELLO_CMD_REGION) {ret = REGION}
+		else if(command == TELLO_CMD_SET_REGION) {ret = SET_REGION}
+		else if(command == TELLO_CMD_REQ_VIDEO_SPS_PPS) {ret = REQ_VIDEO_SPS_PPS}
+		else if(command == TELLO_CMD_TAKE_PICTURE) {ret = TAKE_PICTURE}
+		else if(command == TELLO_CMD_SWITCH_PICTURE_VIDEO) {ret = SWITCH_PICTURE_VIDEO}
+		else if(command == TELLO_CMD_START_RECORDING) {ret = START_RECORDING}
+		else if(command == TELLO_CMD_SET_EV) {ret = SET_EV}
+		else if(command == TELLO_CMD_DATE_TIME) {ret = DATE_TIME}
+		else if(command == TELLO_CMD_STICK) {ret = STICK}
+		else if(command == TELLO_CMD_LOG_HEADER_WRITE) {ret = LOG_HEADER_WRITE}
+		else if(command == TELLO_CMD_LOG_DATA_WRITE) {ret = LOG_DATA_WRITE}
+		else if(command == TELLO_CMD_LOG_CONFIGURATION) {ret = LOG_CONFIGURATION}
+		else if(command == TELLO_CMD_WIFI_SIGNAL) {ret = WIFI_SIGNAL}//               = 26     // RX_O
+		else if(command == TELLO_CMD_VIDEO_BIT_RATE) {ret = VIDEO_BIT_RATE}//            = 40     // pt48
+		else if(command == TELLO_CMD_LIGHT_STRENGTH) {ret = LIGHT_STRENGTH}//            = 53     // RX_O
+		else if(command == TELLO_CMD_VERSION_STRING) {ret = VERSION_STRING}//            = 69     // pt48
+		else if(command == TELLO_CMD_ACTIVATION_TIME) {ret = ACTIVATION_TIME}//           = 71     // pt48
+		else if(command == TELLO_CMD_LOADER_VERSION) {ret = LOADER_VERSION}//            = 73     // pt48
+		else if(command == TELLO_CMD_STATUS) {ret = STATUS}//                    = 86     // RX_O
+		else if(command == TELLO_CMD_ALT_LIMIT) {ret = ALT_LIMIT}//                 = 4182   // pt48
+		else if(command == TELLO_CMD_LOW_BATT_THRESHOLD) {ret = LOW_BATT_THRESHOLD}//        = 4183   // pt48
+		else if(command == TELLO_CMD_ATT_ANGLE) {ret = ATT_ANGLE}//                 = 4185   // pt48
+		else if(command == TELLO_CMD_SET_JPEG_QUALITY) {ret = SET_JPEG_QUALITY}//          = 55     // pt68
+		else if(command == TELLO_CMD_TAKEOFF) {ret = TAKEOFF}//                   = 84     // pt68
+		else if(command == TELLO_CMD_LANDING) {ret = LANDING}//                   = 85     // pt68
+		else if(command == TELLO_CMD_SET_ALT_LIMIT) {ret = SET_ALT_LIMIT}//             = 88     // pt68
+		else if(command == TELLO_CMD_FLIP) {ret = FLIP}//                      = 92     // pt70
+		else if(command == TELLO_CMD_THROW_FLY) {ret = THROW_FLY}//                 = 93     // pt48
+		else if(command == TELLO_CMD_PALM_LANDING) {ret = PALM_LANDING}//              = 94     // pt48
+		else if(command == TELLO_CMD_PLANE_CALIBRATION) {ret = PLANE_CALIBRATION}//         = 4180   // pt68
+		else if(command == TELLO_CMD_SET_LOW_BATTERY_THRESHOLD) {ret = SET_LOW_BATTERY_THRESHOLD}// = 4181   // pt68
+		else if(command == TELLO_CMD_SET_ATTITUDE_ANGLE) {ret = SET_ATTITUDE_ANGLE}//        = 4184   // pt68
+		else if(command == TELLO_CMD_ERROR1) {ret = ERROR1}//                    = 67     // RX_O
+		else if(command == TELLO_CMD_ERROR2) {ret = ERROR2}//                    = 68     // RX_O
+		else if(command == TELLO_CMD_FILE_SIZE) {ret = FILE_SIZE}//                 = 98     // pt50
+		else if(command == TELLO_CMD_FILE_DATA) {ret = FILE_DATA}//                 = 99     // pt50
+		else if(command == TELLO_CMD_FILE_COMPLETE) {ret = FILE_COMPLETE}//             = 100    // pt48
+		else if(command == TELLO_CMD_HANDLE_IMU_ANGLE) {ret = HANDLE_IMU_ANGLE}//          = 90     // pt48
+		else if(command == TELLO_CMD_SET_VIDEO_BIT_RATE) {ret = SET_VIDEO_BIT_RATE}//        = 32     // pt68
+		else if(command == TELLO_CMD_SET_DYN_ADJ_RATE) {ret = SET_DYN_ADJ_RATE}//          = 33     // pt68
+		else if(command == TELLO_CMD_SET_EIS) {ret = SET_EIS}//                   = 36     // pt68
+		else if(command == TELLO_CMD_SMART_VIDEO_START) {ret = SMART_VIDEO_START}//         = 128    // pt68
+		else if(command == TELLO_CMD_SMART_VIDEO_STATUS) {ret = SMART_VIDEO_STATUS}//        = 129    // pt50
+		else if(command == TELLO_CMD_BOUNCE) {ret = BOUNCE}//                    = 4179   // pt68
+		
+		if(ret == "") {
+			ret = "Unknown command."
+		}
+		
+		return ret
+	}
+	
 
 	//Calc CRC ------------------------------------------------------------
 	static let poly:Int = 13970
@@ -118,7 +315,7 @@ class TelloPacket {
 	}
 	//---------------------------------------------------------------------
 	
-	//よくある11バイトのパケットを作る　タイプ、コマンド、データなし
+	//Build 11 Byte Packet　type, commnad, none Data
 	static func build11Packet(type:UInt8,command:UInt16)->[UInt8] {
 		//template
 		var packet:[UInt8] = [0xcc, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
@@ -136,7 +333,7 @@ class TelloPacket {
 		return packet
 	}
 	
-	//通信開始とその返答（Ackで返答が正しいか確認する）
+	//Create Conn_req（Send req -> Return ack）
 	static func createConnectReqPacket()->Data {
 		let strConnReq = "conn_req:00"
 		var byteConnReq = strConnReq.data(using: .utf8)!
@@ -145,7 +342,7 @@ class TelloPacket {
 
 		return byteConnReq
 	}
-
+	//Create ack packet(To use for verification)
 	static func createConnectAckPacket()->Data {
 		let strConnAck = "conn_ack:00"
 		var byteConnAck = strConnAck.data(using: .utf8)!
@@ -155,12 +352,12 @@ class TelloPacket {
 		return byteConnAck
 	}
 
-	//高度取得コマンドパケットを作る
+	//Create Get Altitude Packet
 	static func createGetAltitudePacket()->Data {
 		return Data(bytes: build11Packet(type: 0x48,command: 0x1056))
 	}
 
-	//高度制限変更コマンドパケットｗ作る
+	//Create Set Altitude Packet
 	static func createSetAltitudePacket(altitudeM:Int)->Data {
 		//template
 		var packet:[UInt8] = [0xcc, 0x00, 0x00, 0x00, 0x68, 0x58, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
@@ -186,7 +383,7 @@ class TelloPacket {
 		*/
 	}
 	
-	//パースしてTelloPacketにする
+	//Parse packet and make TelloPacket.
 	static func parsePacket(data:Data)->TelloPacket? {
 		let bytes:[UInt8] = [UInt8](data)
 		
@@ -205,17 +402,21 @@ class TelloPacket {
 	
 		retPacket._typeID = Int(bytes[4] & 0xff)
 	
-		retPacket._commandID =  littleEndianToInt(bytes[5],bytes[6])
+		retPacket._commandID =  UInt16(littleEndianToInt(bytes[5],bytes[6]))
 		retPacket._seqNo = littleEndianToInt(bytes[7],bytes[8])
-	
+
 		let dataSize:Int = retPacket._size - 11
 		if(dataSize > 0) {
 			retPacket._data = [UInt8](repeating: 0x0,count: dataSize)
 			
 			for i in (0 ..< dataSize) {
+				if(i + 9 >= bytes.count-2) {
+					break
+				}
 				retPacket._data?[i] = bytes[i + 9]
 			}
 		}
+
 		retPacket._crc16 = littleEndianToInt(bytes[(bytes.count - 2)],bytes[(bytes.count - 1)])
 		
 		let crc8Check:Int = calcUCRCBToInt(bytes:bytes, len:4)
@@ -230,7 +431,7 @@ class TelloPacket {
 		return retPacket
 	}
 
-	//リトルインディア操作
+	//LittleEndian Functions. Int to LE,LE to Int
 	static func intToLittleEndianWithShift(_ value:Int,_ src:inout[UInt8]) {
 		src[0] = UInt8((value << 3) & 0xff)
 		src[1] = UInt8((value >> 8) & 0xff)
@@ -240,7 +441,7 @@ class TelloPacket {
 		src[1] = UInt8((value >> 8) & 0xff)
 	}
 	static func littleEndianToIntWithShift(_ b0:UInt8,_ b1:UInt8)->Int {
-		return  (((Int(b1) & 0xff) << 8) + (Int(b0) >> 3)) & 0xff
+		return  (((Int(b1) & 0xff) << 8) + (Int(b0) >> 3))
 	}
 	static func littleEndianToInt(_ b0:UInt8,_ b1:UInt8)->Int {
 		return  (((Int(b1)) & 0xff) << 8)  + (Int(b0) & 0xff);

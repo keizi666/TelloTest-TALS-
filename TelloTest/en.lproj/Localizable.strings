@@ -17,6 +17,9 @@
 "Succeeded" = "Succeeded";
 "CurrentAltFormat" = "Current Altitude Limit:%@";
 "UpdateSucceeded" = "Update succeeded.";
+"Region" = "Region:%@";
+"Version" = "Tello's Version:%@";
+"SSID" = "SSID:%@";
 
 "FaultGetAlt" = "Fault get current altitude.";
 "SuccessConnect" = "Successfully connected to Tello:";

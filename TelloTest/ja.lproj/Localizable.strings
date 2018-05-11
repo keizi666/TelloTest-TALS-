@@ -16,6 +16,9 @@
 "Succeeded" = "成功しました。";
 "CurrentAltFormat" = "現在の高度制限値:%@";
 "UpdateSucceeded" = "更新に成功しました。";
+"Region" = "リージョン:%@";
+"Version" = "Telloバージョン:%@";
+"SSID" = "SSID:%@";
 
 "FaultGetAlt" = "高度制限値更新に失敗しました。接続を確認してください。";
 "SuccessConnect" = "Telloに接続しました。";

@@ -55,9 +55,5 @@ struct UIUtility {
 		vc.present(alertSheet, animated: true, completion: nil)
 
 	}
-	
-	
-	
-	
 }
 

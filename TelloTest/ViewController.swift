@@ -16,23 +16,34 @@ class ViewController: UIViewController {
 
 	var _client:UDPClient? = nil
 	var _unitType:Int = KEY_UNIT_METER
-	
+
 	var _isConnect = false
 	var _isSendingAltitude = false
 
 	var _isEnd:Bool = false
 
+	@IBOutlet var _labelSSID: UILabel!
+	var _otherSettingsPhase:Int = 0
+
+	var _carrentAltitude:Int = 0
+
+	@IBOutlet var _labelRegion: UILabel!
 	@IBOutlet var _labelAlart: UILabel!
 	@IBOutlet var _labelCurrentAlt: UILabel!
 	@IBOutlet var _labelUsage: UILabel!
 	@IBOutlet var _labelNewAlt: UILabel!
+	@IBOutlet var _labelVersion: UILabel!
 	@IBOutlet var _sliderAlt: UISlider!
 	@IBOutlet var _segUnitType: UISegmentedControl!
 	
 	@IBOutlet var _buttonSend: UIButton!
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		let b:[UInt8] = [0x00,0x0c,0x54,0x45,0x4c,0x4c,0x4f,0x2d,0x42,0x35,0x34,0x46,0x45,0x30]		
+		String(format: NSLocalizedString("SSID",comment:""), String(bytes: b, encoding: .ascii)!)
 
+		
 		//Load unit setting from user default
 		let ud = UserDefaults.standard
 		_unitType = ud.integer(forKey:ViewController.KEY_SETTING_UNIT_TYPE)
@@ -113,31 +124,65 @@ class ViewController: UIViewController {
 								self._isConnect = true
 							}
 							let resGetAlt:Result = client.send(data: TelloPacket.createGetAltitudePacket())
+//							self._otherSettingsPhase = 0
 							if(resGetAlt.isFailure) {
 								print("Error:Send GetAltitudePacket")
 								self.closeConnection()
 							}
+							client.send(data: TelloPacket.build11Packet(type: 0x48, command: TelloPacket.TELLO_CMD_REGION))
+							client.send(data: TelloPacket.build11Packet(type: 0x48, command: TelloPacket.TELLO_CMD_VERSION_STRING))
+							client.send(data: TelloPacket.build11Packet(type: 0x48, command: TelloPacket.TELLO_CMD_SSID))
 						}
 						//Binary packet
 						else if(bytes[0] == 0xcc) {
 							//Parse
 							if let packet = TelloPacket.parsePacket(data:Data(data)) {
-								//4182 == TELLO_CMD_ALT_LIMIT
+
+								//TELLO_CMD_ALT_LIMIT
 								if(packet._commandID == 4182) {
 									//print(packet._data![0],packet._data![1],packet._data![2])
 									
 									//Update current altitude label
-									let currentAltitude:Int = TelloPacket.littleEndianToInt(packet._data![1], packet._data![2])
+									self._carrentAltitude = TelloPacket.littleEndianToInt(packet._data![1], packet._data![2])
 									DispatchQueue.main.async {
-										self._sliderAlt.value = Float(currentAltitude)
-										self._labelNewAlt?.text = self.makeAltitudeString(currentAltitude)
-										self._labelCurrentAlt?.text = String(format: NSLocalizedString("CurrentAltFormat",comment:""), self.makeAltitudeString(currentAltitude) )
+										self._sliderAlt.value = Float(self._carrentAltitude)
+										self._labelNewAlt?.text = self.makeAltitudeString(self._carrentAltitude)
+										self._labelCurrentAlt?.text = String(format: NSLocalizedString("CurrentAltFormat",comment:""), self.makeAltitudeString(self._carrentAltitude) )
 										
 										if(self._isSendingAltitude) {
 											UIUtility.showAlertWithOK(vc: self, title: NSLocalizedString("Succeeded",comment:""), message: NSLocalizedString("UpdateSucceeded",comment:""))
 										}
 										self._isSendingAltitude = false
+										
+										if(self._otherSettingsPhase == 0) {
+										}
+									}
+								}
+								//TELLO_CMD_REGION
+								else if(packet._commandID == TelloPacket.TELLO_CMD_REGION) {
+									DispatchQueue.main.async {
+										if let data = packet._data {
+											self._labelRegion?.text = String(format: NSLocalizedString("Region",comment:""), String(bytes: data, encoding: .ascii)!)
+										}
+									}
+								}
+								//TELLO_CMD_VERSION_STRING
+								else if(packet._commandID == TelloPacket.TELLO_CMD_VERSION_STRING) {
 
+									DispatchQueue.main.async {
+										if let data = packet._data {
+											self._labelVersion?.text = String(format: NSLocalizedString("Version",comment:""), String(bytes: data, encoding: .ascii)!)
+										}
+									}
+								}
+								//TELLO_CMD_SSID
+								else if(packet._commandID == TelloPacket.TELLO_CMD_SSID) {
+									
+									DispatchQueue.main.async {
+										if let data = packet._data {
+											//print(TelloPacket.packetToHexString(packet: data))
+											self._labelSSID?.text = String(format: NSLocalizedString("SSID",comment:""), String(bytes: data, encoding: .ascii)!)
+										}
 									}
 								}
 							}
@@ -206,8 +251,21 @@ class ViewController: UIViewController {
 	//changeUnitType save type
 	@IBAction func changeUnitType(_ sender: UISegmentedControl) {
 		let ud = UserDefaults.standard
-		_unitType = sender.selectedSegmentIndex
+		self._unitType = sender.selectedSegmentIndex
 		ud.set(_unitType, forKey: ViewController.KEY_SETTING_UNIT_TYPE)
+		
+		if(self._carrentAltitude > 0) {
+			self._labelNewAlt?.text = self.makeAltitudeString(Int(self._sliderAlt.value))
+			self._labelCurrentAlt?.text = String(format: NSLocalizedString("CurrentAltFormat",comment:""), self.makeAltitudeString(self._carrentAltitude) )
+		}
+		else {
+			if(self._unitType ==  ViewController.KEY_UNIT_METER) {
+				self._labelNewAlt?.text = "--m"
+			}
+			else {
+				self._labelNewAlt?.text = "--ft"
+			}
+		}
 	}
 	
 	//changeAltSlider update label
