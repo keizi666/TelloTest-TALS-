@@ -7,8 +7,11 @@ Completely free.
 If you wish, you can also make a profit with minimal change.
 
 however,I do not guarantee anything.
+
+e-mail 
+keiziweb@gmail.com
  
-------------Explanatory text as it was published as an application
+------------Explanatory text as it was published as an application on AppStore
 
 It is an application that changes the altitude limit of Ryze Tech's drones "Tello".
 It is maximum 30 m.
